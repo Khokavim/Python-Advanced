@@ -2,13 +2,15 @@ import pandas as pd
 import os, fnmatch
 
 xl = pd.ExcelFile("tin.xlsx")
-df = xl.parse("Sheet1")
+tin_data = xl.parse("Sheet1")
 tin_count=0
 
-tins=df['TIN']
+tins=tin_data['TIN']
+#print(tins)
 
 listOfFiles = os.listdir('./xmls')
 #print(listOfFiles)
+
 for entry in listOfFiles:
     for tin in range(len(tins)):
       pattern = str(tins[tin]) + ".xml"
